@@ -1,0 +1,13 @@
+﻿
+@functions{
+    public static string getBookTitle()
+    {
+        string bookTitle = System.Web.Configuration.WebConfigurationManager.AppSettings["BookTitle"];
+        if (!string.IsNullOrEmpty(bookTitle))
+        {
+            return bookTitle;
+        }
+
+        return "查無資料!";
+    }
+}

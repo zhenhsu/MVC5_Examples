@@ -1,0 +1,94 @@
+﻿
+@{
+    ViewBag.Title = "ViewDataList";
+}
+
+<div class="jumbotron alert-success">
+    <h2>View Data List</h2>
+</div>
+
+
+@if (ViewData.Count() > 0)
+{
+    <h2>ViewData 共有 @ViewData.Count() 筆資料</h2>
+    <ul>
+        @*ViewData*@
+        <li>Name : @(ViewData["Name"] ?? "無資料")</li>
+        <li>Age : @(ViewData["Age"] ?? "無資料")</li>
+        <li>Single : @(ViewData["Single"] ?? "無資料")</li>
+        <li>Money : @(ViewData["Money"] ?? "無資料")</li>
+
+        @*ViewBag*@
+        <li>Nickname : @(ViewData["Nickname"] ?? "無資料")</li>
+        <li>Height : @(ViewData["Height"] ?? "無資料")</li>
+        <li>Weight : @(ViewData["Weight"] ?? "無資料")</li>
+        <li>Married : @(ViewData["Married"] ?? "無資料")</li>
+    </ul>
+    <hr />
+    <ul>
+        @if (ViewData.ContainsKey("Name"))
+        {
+            <li>Name : @ViewData["Name"]</li>
+        }
+        else
+        {
+            <li>Name : 無資料</li>
+
+        }
+
+        @if (ViewData.ContainsKey("Age"))
+        {
+            <li>Age : @ViewData["Age"]</li>
+        }
+        else
+        {
+            <li>Age : 無資料</li>
+
+        }
+
+        @if (ViewData.ContainsKey("Single"))
+        {
+            <li>Single : @ViewData["Single"]</li>
+        }
+        else
+        {
+            <li>Single : 無資料</li>
+
+        }
+
+        @if (ViewData.ContainsKey("Money"))
+        {
+            <li>Money : @ViewData["Money"]</li>
+        }
+        else
+        {
+            <li>Money : 無資料</li>
+
+        }
+
+        <li>Nickname : @(ViewData.ContainsKey("Nickname") ? ViewData["Nickname"] : "無資料")</li>
+        <li>Height: @(ViewData.ContainsKey("Height") ? ViewData["Height"] : "無資料")</li>
+        <li>Weight : @(ViewData.ContainsKey("Weight") ? ViewData["Weight"] : "無資料")</li>
+        <li>Married :@(ViewData.ContainsKey("Married") ? ViewData["Married"] : "無資料")</li>
+    </ul>
+}
+
+<hr />
+@foreach (var item in ViewData)
+{
+    <li>@item.Key, @item.Value</li>
+}
+
+<hr />
+<ul>
+    @{
+        var enumerator = ViewData.GetEnumerator();
+    }
+
+    @while (enumerator.MoveNext())
+    {
+        var item = enumerator.Current;
+        <li>@item.Key, @item.Value</li>
+    }
+
+</ul>

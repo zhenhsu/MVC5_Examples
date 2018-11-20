@@ -1,0 +1,54 @@
+﻿@model IEnumerable<MvcBasic.Models.Employee>
+
+@{
+    ViewBag.Title = "Employees";
+
+    List<MvcBasic.Models.Employee> eModel = (List<MvcBasic.Models.Employee>)ViewBag.Employees;
+    //var myModel = (List<MvcBasic.Models.Employee>)ViewData.Model;
+
+    int i = 0;
+}
+
+
+
+<h2>Employees</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @*@Html.DisplayNameFor(x => eModel[0].Name)*@
+            @*@Html.DisplayNameFor(model => model.Name)*@
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(y => eModel[0].Email)*@
+            @*@Html.DisplayNameFor(model => model.Email)*@
+
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(z => myModel[0].Phone)*@
+            @*@Html.DisplayNameFor(model => model.Phone)*@
+
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in eModel)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+</table>
